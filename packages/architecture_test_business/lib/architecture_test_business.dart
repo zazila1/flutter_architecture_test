@@ -1,0 +1,1 @@
+library architecture_test_business;

@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  architecture_test_business:
+    path: ./packages/architecture_test_business
   cupertino_icons: ^1.0.4
   dio: ^4.0.4
   transparent_image: ^2.0.0
