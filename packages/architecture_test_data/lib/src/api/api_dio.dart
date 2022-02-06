@@ -1,4 +1,4 @@
-import 'package:architecture_test_data/src/interfaces/api.dart';
+import 'package:architecture_test_data/src/api/api.dart';
 import 'package:dio/dio.dart';
 
 class ApiDio implements Api<Dio> {

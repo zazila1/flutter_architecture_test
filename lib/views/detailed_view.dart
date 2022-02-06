@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hotels/models/hotel.dart';
+//import 'package:hotels/models/hotel.dart';
+import 'package:architecture_test_business/architecture_test_business.dart';
 
 class HotelDetailsView extends StatefulWidget {
   const HotelDetailsView({Key? key, required this.hotelPreview}) : super(key: key);

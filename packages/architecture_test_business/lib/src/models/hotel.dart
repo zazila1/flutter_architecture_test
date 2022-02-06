@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'hotel_details_response.freezed.dart';
-part 'hotel_details_response.g.dart';
+part 'hotel.freezed.dart';
+part 'hotel.g.dart';
 
 @freezed
 class Hotel with _$Hotel {
@@ -17,6 +17,15 @@ class Hotel with _$Hotel {
   }) = _Hotel;
 
   factory Hotel.fromJson(Map<String, dynamic> json) => _$HotelFromJson(json);
+
+  static Future<Hotel>? parseHotel(dynamic responseData) async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 500));
+      return Hotel.fromJson(responseData);
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }
 
 @freezed

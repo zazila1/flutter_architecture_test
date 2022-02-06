@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hotels/models/hotel.dart';
+//import 'package:hotels/models/hotel.dart';
 import 'package:hotels/router/fluro_router.dart';
+import 'package:architecture_test_business/architecture_test_business.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

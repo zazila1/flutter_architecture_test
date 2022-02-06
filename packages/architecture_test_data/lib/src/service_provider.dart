@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import 'api_dio.dart';
-import 'interfaces/api.dart';
+import 'api/api_dio.dart';
+import 'api/api.dart';
 
 class ServiceProvider {
   static final _getIt = GetIt.I;
