@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   architecture_test_data:
     path: ../architecture_test_data
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:

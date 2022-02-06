@@ -10,12 +10,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get_it: ^7.2.0
+  dio: ^4.0.4
+  freezed: ^1.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.5.0
   flutter_lints: ^1.0.4
+  build_runner: ^2.1.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
