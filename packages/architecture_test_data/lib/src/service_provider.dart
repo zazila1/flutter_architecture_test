@@ -11,9 +11,7 @@ class ServiceProvider {
 
   void initialize() {
     _getIt.registerLazySingleton<Dio>(() => Dio());
-    _getIt.registerLazySingleton<Api>(() => ApiDio(
-      _getIt.get<Dio>(),
-      baseUrl: "https://run.mocky.io/v3/"
-    ));
+    _getIt.registerLazySingleton<Api>(
+        () => ApiDio(_getIt.get<Dio>(), baseUrl: "https://run.mocky.io/v3/"));
   }
 }
