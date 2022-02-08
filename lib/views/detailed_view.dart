@@ -54,7 +54,7 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.hotelPreview.name ?? ""),
+        title: Text(widget.hotelPreview.name),
       ),
       body: SafeArea(
         child: hasError
@@ -123,24 +123,25 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Expanded(
-                                          child: Container(
-                                              padding: const EdgeInsets.only(right: 5),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  const Text("Платные",
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight.w500,
-                                                          fontSize: 20)),
-                                                  const SizedBox(height: 10),
-                                                  if (_currentHotel.services?.paid != null)
-                                                    ..._currentHotel.services!.paid!
-                                                        .map((e) => Text(e.toString()))
-                                                        .toList()
-                                                ],
-                                              ))),
+                                        child: Container(
+                                          padding: const EdgeInsets.only(right: 5),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              const Text("Платные",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500, fontSize: 20)),
+                                              const SizedBox(height: 10),
+                                              if (_currentHotel.services?.paid != null)
+                                                ..._currentHotel.services!.paid!
+                                                    .map((e) => Text(e.toString()))
+                                                    .toList()
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                       Expanded(
                                           child: Container(
                                               margin: const EdgeInsets.only(left: 5),

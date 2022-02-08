@@ -1,4 +1,4 @@
 abstract class Api<T> {
-  late T httpClient;
-  late String? baseUrl;
+  late T _httpClient;
+  late String? _baseUrl;
 }

@@ -33,6 +33,7 @@ class _HomeViewState extends State<HomeView> {
     try {
       final response =
           await dio.get('https://run.mocky.io/v3/ac888dc5-d193-4700-b12c-abb43e289301');
+
       setState(() {
         _hotelPreviewData = HotelPreview.parseHotelsPreview(response.data);
       });
@@ -150,7 +151,7 @@ class HomeViewList extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: Text(
-                                previews[index].name ?? "-",
+                                previews[index].name,
                                 style: TextStyle(
                                   fontSize: (_isBigScreen ? 16 : 10),
                                 ),
@@ -228,7 +229,7 @@ class HomeViewGrid extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: Text(
-                          previews[index].name ?? "-",
+                          previews[index].name,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: (_isBigScreen ? 16 : 9),
