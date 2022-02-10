@@ -1,23 +1,31 @@
+import 'package:architecture_test_business/architecture_test_business.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'router/fluro_router.dart';
 
 void main() {
-  runApp(MyApp());
   AppRouter.init();
+  ProvidersFactory.instance.initialize();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: AppRouter.startRoute,
-      onGenerateRoute: AppRouter.router.generator,
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<HotelDetailsNotifier>(
+              create: (context) => ProvidersFactory.instance.get<HotelDetailsNotifier>()),
+        ],
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          initialRoute: AppRouter.startRoute,
+          onGenerateRoute: AppRouter.router.generator,
+        ));
   }
 }

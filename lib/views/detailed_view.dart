@@ -34,10 +34,15 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
     try {
       final response = await dio.get('https://run.mocky.io/v3/${widget.hotelPreview.uuid}');
       setState(() {
+        print("1");
         _hotelData = Hotel.parseHotel(response.data);
+        print("2");
+
       });
     } on DioError catch (e) {
       setState(() {
+        print("3");
+
         errorMessage = e.response?.data["message"] ?? e.error.toString();
         hasError = true;
         isLoading = false;
@@ -71,8 +76,10 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                       return const Center(child: CircularProgressIndicator());
                     case ConnectionState.done:
                       if (snapshot.hasError) {
+                        print(snapshot.error.toString());
                         return Center(child: Text(snapshot.error.toString()));
                       } else {
+                        print("else");
                         _currentHotel = snapshot.data;
                         return SingleChildScrollView(
                             child: Column(

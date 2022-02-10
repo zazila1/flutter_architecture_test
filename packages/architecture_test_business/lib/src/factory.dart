@@ -1,18 +1,18 @@
+import 'package:architecture_test_business/src/notifiers/hotel_details_notifier.dart';
+import 'package:architecture_test_business/src/notifiers/hotel_details_state.dart';
 import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:get_it/get_it.dart';
 
-class BusinessFactory {
+class ProvidersFactory {
   static final _getIt = GetIt.I;
-  //T get<T extends Object>() => _getIt.get<T>();
+  T get<T extends Object>() => _getIt.get<T>();
 
-  static final instance = BusinessFactory();
+  static final instance = ProvidersFactory();
 
-  void init() {
+  void initialize() {
     ServiceProvider.instance.initialize();
-    // _getIt.registerFactory<MainBloc>(
-    //       () => MainBloc(
-    //     yaFunctions: ServiceProvider.instance.get<YaFunctions>(),
-    //   ),
-    // );
+    _getIt.registerFactory<HotelDetailsNotifier>(
+          () => HotelDetailsState(_getIt.get<Api>()),
+    );
   }
 }
