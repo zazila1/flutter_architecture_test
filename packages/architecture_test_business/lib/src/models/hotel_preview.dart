@@ -7,13 +7,14 @@ part 'hotel_preview.g.dart';
 class HotelPreview with _$HotelPreview {
   const factory HotelPreview({
     required String uuid,
-    @Default('') String name,
-    @Default('') String poster,
+    required String name,
+    required String poster,
   }) = _HotelPreview;
 
   factory HotelPreview.fromJson(Map<String, dynamic> json) =>
       _$HotelPreviewFromJson(json);
 
+  // удалить
   static Future<List<HotelPreview>>? parseHotelsPreview(
       dynamic responseData) async {
     try {

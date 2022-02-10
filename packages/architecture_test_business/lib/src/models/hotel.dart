@@ -7,13 +7,13 @@ part 'hotel.g.dart';
 class Hotel with _$Hotel {
   const factory Hotel({
     required String uuid,
-    @Default('') name,
-    @Default('') poster,
-    Address? address,
-    @Default(0.0) double price,
-    @Default(0.0) double rating,
-    Services? services,
-    List<String>? photos,
+    required String name,
+    required String poster,
+    required Address address,
+    required double price,
+    required double rating,
+    required Services services,
+    required List<String> photos,
   }) = _Hotel;
 
   factory Hotel.fromJson(Map<String, dynamic> json) => _$HotelFromJson(json);
@@ -31,11 +31,11 @@ class Hotel with _$Hotel {
 @freezed
 class Address with _$Address {
   const factory Address({
-    @Default('') String country,
-    @Default('') String street,
-    @Default('') String city,
-    @Default(0) int zipCode,
-    Coords? coords,
+    required String country,
+    required String street,
+    required String city,
+    required int zipCode,
+    required Coords coords,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
@@ -44,8 +44,8 @@ class Address with _$Address {
 @freezed
 class Coords with _$Coords {
   const factory Coords({
-    @Default(0.0) double lat,
-    @Default(0.0) double lan,
+    required double lat,
+    required double lan,
   }) = _Coords;
 
   factory Coords.fromJson(Map<String, dynamic> json) => _$CoordsFromJson(json);
@@ -54,8 +54,8 @@ class Coords with _$Coords {
 @freezed
 class Services with _$Services {
   const factory Services({
-    List<String>? free,
-    List<String>? paid,
+    required List<String> free,
+    required List<String> paid,
   }) = _Services;
 
   factory Services.fromJson(Map<String, dynamic> json) => _$ServicesFromJson(json);

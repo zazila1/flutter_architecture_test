@@ -82,7 +82,7 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                 autoPlay: true,
                                 enlargeCenterPage: false,
                               ),
-                              items: _currentHotel.photos!
+                              items: _currentHotel.photos
                                   .map((item) => Container(
                                         padding: const EdgeInsets.symmetric(horizontal: 5.0),
                                         child: Center(
@@ -103,11 +103,11 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                               child: Column(
                                 children: [
                                   DescriptionText(
-                                      label: "Страна", text: _currentHotel.address?.country),
+                                      label: "Страна", text: _currentHotel.address.country),
                                   DescriptionText(
-                                      label: "Город", text: _currentHotel.address?.city),
+                                      label: "Город", text: _currentHotel.address.city),
                                   DescriptionText(
-                                      label: "Улица", text: _currentHotel.address?.street),
+                                      label: "Улица", text: _currentHotel.address.street),
                                   DescriptionText(
                                       label: "Рейтинг", text: _currentHotel.rating.toString()),
                                   Container(
@@ -134,8 +134,7 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500, fontSize: 20)),
                                               const SizedBox(height: 10),
-                                              if (_currentHotel.services?.paid != null)
-                                                ..._currentHotel.services!.paid!
+                                                ..._currentHotel.services.paid
                                                     .map((e) => Text(e.toString()))
                                                     .toList()
                                             ],
@@ -156,8 +155,7 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                                           fontWeight: FontWeight.w500,
                                                           fontSize: 20)),
                                                   const SizedBox(height: 10),
-                                                  if (_currentHotel.services?.free != null)
-                                                    ..._currentHotel.services!.free!
+                                                    ..._currentHotel.services.free
                                                         .map((e) => Text(e.toString()))
                                                         .toList()
                                                 ],

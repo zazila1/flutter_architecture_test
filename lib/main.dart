@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AppRouter.startRoute,
       onGenerateRoute: AppRouter.router.generator,
-
     );
   }
 }

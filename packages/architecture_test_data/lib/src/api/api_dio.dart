@@ -3,11 +3,11 @@ import 'package:architecture_test_data/src/models/hotel_response.dart';
 import 'package:architecture_test_data/src/models/hotels_preview_response.dart';
 import 'package:dio/dio.dart';
 
-class ApiDio implements Api<Dio> {
-  ApiDio(this._httpClient, [this._baseUrl = ""]);
+class ApiDio implements Api {
+  final Dio _httpClient;
+  final String? _baseUrl;
 
-  late Dio _httpClient;
-  late String? _baseUrl;
+  ApiDio(this._httpClient, [this._baseUrl = ""]);
 
   Future<List<HotelsPreviewResponse>> getHotelsPreviewData() async {
     final List<HotelsPreviewResponse> _data;
@@ -31,6 +31,7 @@ class ApiDio implements Api<Dio> {
     }
   }
 
+  @override
   Future<HotelResponse> getHotelData(String uuid) async {
     HotelResponse _data;
     final responseData;
