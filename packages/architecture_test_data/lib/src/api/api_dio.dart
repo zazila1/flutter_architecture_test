@@ -35,7 +35,6 @@ class ApiDio implements Api {
   Future<HotelResponse> getHotelData(String uuid) async {
     HotelResponse _data;
     final responseData;
-
     try {
       responseData = await _httpClient.get('${_baseUrl}${uuid}');
     } on DioError catch (e) {
@@ -49,6 +48,7 @@ class ApiDio implements Api {
 
       return _data;
     } catch (e) {
+      print(e);
       return Future.error(e);
     }
   }

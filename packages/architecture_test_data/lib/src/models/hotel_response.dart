@@ -25,7 +25,8 @@ class AddressResponse with _$AddressResponse {
     required String country,
     required String street,
     required String city,
-    required int zipCode,
+    // ignore: invalid_annotation_target
+    @JsonKey(name: 'zip_code') required int zipCode,
     required CoordsResponse coords,
   }) = _AddressResponse;
 

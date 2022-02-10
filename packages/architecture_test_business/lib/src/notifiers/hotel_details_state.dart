@@ -12,7 +12,9 @@ class HotelDetailsState with ChangeNotifier implements HotelDetailsNotifier {
   bool isLoaded = false;
 
   void getHotelData(String uuid) async {
+    print("getHotelData");
     var data = await _api.getHotelData(uuid);
+    print("api.getHotelData");
     hotelData = _fillHotelWithResponseData(data);
     notifyListeners();
     isLoaded = true;
@@ -23,6 +25,7 @@ class HotelDetailsState with ChangeNotifier implements HotelDetailsNotifier {
   }
 
   Hotel _fillHotelWithResponseData(HotelResponse data) {
+    print("_fillHotelWithResponseData");
     Services _services = Services(free: data.services.free, paid: data.services.paid);
     Coords _coords = Coords(lat: data.address.coords.lat, lan: data.address.coords.lan);
     Address _address = Address(

@@ -20,7 +20,9 @@ class _HotelDetailsView1State extends State<HotelDetailsView1> {
 
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Consumer<HotelDetailsNotifier>(builder: (context, state, child) {
+      print("Consumer");
       state.getHotelData(widget.hotelPreview.uuid);
       //Hotel _currentHotel = state.;
 
@@ -65,6 +67,8 @@ class _HotelDetailsView1State extends State<HotelDetailsView1> {
                             DescriptionText(label: "Улица", text: state.hotelData.address.street),
                             DescriptionText(
                                 label: "Рейтинг", text: state.hotelData.rating.toString()),
+                            DescriptionText(
+                                label: "Индекс", text: state.hotelData.address.zipCode.toString()),
                             Container(
                               width: double.infinity,
                               margin: const EdgeInsets.only(top: 20, bottom: 10),
