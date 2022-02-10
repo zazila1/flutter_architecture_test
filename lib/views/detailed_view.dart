@@ -37,7 +37,6 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
         print("1");
         _hotelData = Hotel.parseHotel(response.data);
         print("2");
-
       });
     } on DioError catch (e) {
       setState(() {
@@ -111,8 +110,7 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                 children: [
                                   DescriptionText(
                                       label: "Страна", text: _currentHotel.address.country),
-                                  DescriptionText(
-                                      label: "Город", text: _currentHotel.address.city),
+                                  DescriptionText(label: "Город", text: _currentHotel.address.city),
                                   DescriptionText(
                                       label: "Улица", text: _currentHotel.address.street),
                                   DescriptionText(
@@ -141,9 +139,9 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500, fontSize: 20)),
                                               const SizedBox(height: 10),
-                                                ..._currentHotel.services.paid
-                                                    .map((e) => Text(e.toString()))
-                                                    .toList()
+                                              ..._currentHotel.services.paid
+                                                  .map((e) => Text(e.toString()))
+                                                  .toList()
                                             ],
                                           ),
                                         ),
@@ -162,9 +160,9 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
                                                           fontWeight: FontWeight.w500,
                                                           fontSize: 20)),
                                                   const SizedBox(height: 10),
-                                                    ..._currentHotel.services.free
-                                                        .map((e) => Text(e.toString()))
-                                                        .toList()
+                                                  ..._currentHotel.services.free
+                                                      .map((e) => Text(e.toString()))
+                                                      .toList()
                                                 ],
                                               ))),
                                     ],
@@ -195,13 +193,16 @@ class DescriptionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(vertical: 3),
-        child: Row(
-          children: [
-            Text("$label:   "),
-            Text(text ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-          ],
-        ));
+    return text == null
+        ? const SizedBox.shrink()
+        : Container(
+            margin: const EdgeInsets.symmetric(vertical: 3),
+            child: Row(
+              children: [
+                Text("$label:   "),
+                Text(text ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+          );
   }
 }

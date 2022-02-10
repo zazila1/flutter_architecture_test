@@ -13,9 +13,17 @@ class HotelDetailsState with ChangeNotifier implements HotelDetailsNotifier {
 
   void getHotelData(String uuid) async {
     print("getHotelData");
-    var data = await _api.getHotelData(uuid);
+    var data;
+    try {
+      data = await _api.getHotelData(uuid);
+      hotelData = _fillHotelWithResponseData(data);
+    }
+    catch(e)
+    {
+      print(e);
+    }
     print("api.getHotelData");
-    hotelData = _fillHotelWithResponseData(data);
+
     notifyListeners();
     isLoaded = true;
   }
