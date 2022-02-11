@@ -4,32 +4,37 @@ import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:flutter/material.dart';
 
 class HotelDetailsState with ChangeNotifier implements HotelDetailsNotifier {
-  HotelDetailsState(this._api);
+  HotelDetailsState(this._api)
+  {
+   print ("HotelDetailsState CONSTRUCTOR");
+  }
+
 
   final Api _api;
-  late Hotel hotelData;
+  late Future<Hotel> hotelData;
 
-  bool isLoaded = false;
+  //bool isLoaded = false;
 
-  void getHotelData(String uuid) async {
-    print("getHotelData");
-    var data;
-    try {
-      data = await _api.getHotelData(uuid);
-      hotelData = _fillHotelWithResponseData(data);
-    }
-    catch(e)
-    {
-      print(e);
-    }
-    print("api.getHotelData");
-
+  void loadHotelData(String uuid) async {
+    hotelData = _getHotelDataFromApi(uuid);
     notifyListeners();
-    isLoaded = true;
   }
 
   void updateHotel() {
     // not implemented
+  }
+
+  Future<Hotel> _getHotelDataFromApi(String uuid) async {
+    print("getHotelData");
+    var data;
+    try {
+      data = await _api.getHotelData(uuid);
+    }
+    catch(e)
+    {
+      return Future.error(e);
+    }
+    return Future.value(_fillHotelWithResponseData(data));
   }
 
   Hotel _fillHotelWithResponseData(HotelResponse data) {
