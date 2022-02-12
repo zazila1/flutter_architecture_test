@@ -2,8 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:hotels/views/detailed_view.dart';
 import 'package:hotels/views/home_view.dart';
 import 'package:architecture_test_business/architecture_test_business.dart';
-import 'package:provider/provider.dart';
-
 
 Handler homeHandler = Handler(handlerFunc: (context, params) {
   return const HomeView();

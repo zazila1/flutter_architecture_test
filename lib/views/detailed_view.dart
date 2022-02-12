@@ -23,7 +23,6 @@ class _HotelDetailsViewState extends State<HotelDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    print("BUILD");
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.hotelPreview.name),

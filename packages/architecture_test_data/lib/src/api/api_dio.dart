@@ -9,9 +9,10 @@ class ApiDio implements Api {
 
   ApiDio(this._httpClient, [this._baseUrl = ""]);
 
+  @override
   Future<List<HotelPreviewResponse>> getHotelsPreviewData() async {
     final List<HotelPreviewResponse> _data;
-    final responseData;
+    final Response responseData;
 
     try {
       responseData = await _httpClient.get('${_baseUrl}ac888dc5-d193-4700-b12c-abb43e289301');
@@ -34,9 +35,9 @@ class ApiDio implements Api {
   @override
   Future<HotelResponse> getHotelData(String uuid) async {
     HotelResponse _data;
-    final responseData;
+    final Response responseData;
     try {
-      responseData = await _httpClient.get('${_baseUrl}${uuid}');
+      responseData = await _httpClient.get('$_baseUrl$uuid');
     } on DioError catch (e) {
       String error = e.response?.data["message"] ?? e.error.toString();
 
@@ -48,7 +49,6 @@ class ApiDio implements Api {
 
       return _data;
     } catch (e) {
-      print(e);
       return Future.error(e);
     }
   }

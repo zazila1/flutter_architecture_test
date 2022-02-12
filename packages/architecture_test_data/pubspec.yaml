@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  architecture_test_analyzer:
+    path: ../architecture_test_analyzer
   get_it: ^7.2.0
   dio: ^4.0.4
   freezed: ^1.1.1

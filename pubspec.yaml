@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  architecture_test_analyzer:
+    path: ./packages/architecture_test_analyzer
   architecture_test_business:
     path: ./packages/architecture_test_business
   cupertino_icons: ^1.0.4

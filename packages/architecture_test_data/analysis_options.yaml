@@ -1,1 +1,1 @@
-include: ./analysis_options.yaml
+include: package:architecture_test_analyzer/analysis_options.yaml
