@@ -1,5 +1,5 @@
-import 'package:architecture_test_business/src/notifiers/hotel_details_notifier.dart';
-import 'package:architecture_test_business/src/notifiers/hotel_details_state.dart';
+import 'package:architecture_test_business/src/notifiers/hotels_notifier.dart';
+import 'package:architecture_test_business/src/notifiers/hotels_state.dart';
 import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,8 +11,8 @@ class ProvidersFactory {
 
   void initialize() {
     ServiceProvider.instance.initialize();
-    _getIt.registerFactory<HotelDetailsNotifier>(
-          () => HotelDetailsState(_getIt.get<Api>()),
+    _getIt.registerFactory<HotelsNotifier>(
+          () => HotelsState(_getIt.get<Api>()),
     );
   }
 }

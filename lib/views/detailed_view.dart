@@ -4,16 +4,16 @@ import 'package:architecture_test_business/architecture_test_business.dart';
 import 'package:hotels/views/utils/description_text.dart';
 import 'package:provider/provider.dart';
 
-class HotelDetailsView1 extends StatefulWidget {
-  const HotelDetailsView1({Key? key, required this.hotelPreview}) : super(key: key);
+class HotelDetailsView extends StatefulWidget {
+  const HotelDetailsView({Key? key, required this.hotelPreview}) : super(key: key);
 
   final HotelPreview hotelPreview;
 
   @override
-  _HotelDetailsView1State createState() => _HotelDetailsView1State();
+  _HotelDetailsViewState createState() => _HotelDetailsViewState();
 }
 
-class _HotelDetailsView1State extends State<HotelDetailsView1> {
+class _HotelDetailsViewState extends State<HotelDetailsView> {
   @override
   void initState() {
     super.initState();
@@ -23,7 +23,7 @@ class _HotelDetailsView1State extends State<HotelDetailsView1> {
   Widget build(BuildContext context) {
     print("BUILD");
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      Provider.of<HotelDetailsNotifier>(context, listen: false)
+      Provider.of<HotelsNotifier>(context, listen: false)
           .loadHotelData(widget.hotelPreview.uuid);
     });
     return Scaffold(
@@ -31,7 +31,7 @@ class _HotelDetailsView1State extends State<HotelDetailsView1> {
           title: Text(widget.hotelPreview.name),
         ),
         body: SafeArea(
-          child: Consumer<HotelDetailsNotifier>(builder: (context, state, child) {
+          child: Consumer<HotelsNotifier>(builder: (context, state, child) {
             return FutureBuilder<Hotel>(
               future: state.hotelData,
               builder: (BuildContext context, AsyncSnapshot snapshot) {

@@ -1,16 +1,15 @@
 import 'package:architecture_test_business/src/models/hotel.dart';
-import 'package:architecture_test_business/src/notifiers/hotel_details_notifier.dart';
+import 'package:architecture_test_business/src/notifiers/hotels_notifier.dart';
 import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:flutter/material.dart';
 
-class HotelDetailsState with ChangeNotifier implements HotelDetailsNotifier {
-  HotelDetailsState(this._api)
+class HotelsState with ChangeNotifier implements HotelsNotifier {
+  HotelsState(this._api)
   {
    print ("HotelDetailsState CONSTRUCTOR");
   }
-
-
   final Api _api;
+  late Future<Hotel> previewHotelData;
   late Future<Hotel> hotelData;
 
   //bool isLoaded = false;
