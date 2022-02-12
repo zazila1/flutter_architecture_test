@@ -54,13 +54,11 @@ class _HomeViewState extends State<HomeView> {
                   case ConnectionState.waiting:
                     return const Center(child: CircularProgressIndicator());
                   case ConnectionState.done:
-                    if (snapshot.hasError) {
-                      return const Center(child: Text("Файл не найден"));
-                    } else {
-                      return _isListView
-                          ? HomeViewList(previews: snapshot.data)
-                          : HomeViewGrid(previews: snapshot.data);
-                    }
+                    return snapshot.hasError
+                        ? const Center(child: Text("Файл не найден"))
+                        : _isListView
+                            ? HomeViewList(previews: snapshot.data)
+                            : HomeViewGrid(previews: snapshot.data);
                   default:
                     return const SingleChildScrollView(
                       child: Text('Default'),

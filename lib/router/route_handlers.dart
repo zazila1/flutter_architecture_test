@@ -9,5 +9,6 @@ Handler homeHandler = Handler(handlerFunc: (context, params) {
 
 Handler hotelDetailsHandler = Handler(handlerFunc: (context, params) {
   final args = context!.settings!.arguments as HotelPreview;
+
   return HotelDetailsView(hotelPreview: args);
 });

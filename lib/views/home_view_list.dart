@@ -47,7 +47,7 @@ class HomeViewList extends StatelessWidget {
                           style: TextStyle(
                             fontSize: (_isBigScreen ? 16 : 10),
                           ),
-                        )),
+                        ),),
                         SizedBox(
                           width: _isBigScreen ? 100 : 80,
                           child: TextButton(
@@ -58,7 +58,7 @@ class HomeViewList extends StatelessWidget {
                             ),
                             onPressed: () => {
                               AppRouter.router.navigateTo(context, Routes.hotelDetails,
-                                  routeSettings: RouteSettings(arguments: previews[index]))
+                                  routeSettings: RouteSettings(arguments: previews[index]),),
                             },
                             style: TextButton.styleFrom(
                               primary: Colors.white,

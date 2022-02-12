@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<HotelsNotifier>(
-              create: (context) => ProvidersFactory.instance.get<HotelsNotifier>()),
+              create: (context) => ProvidersFactory.instance.get<HotelsNotifier>(),),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -26,6 +26,6 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: AppRouter.startRoute,
           onGenerateRoute: AppRouter.router.generator,
-        ));
+        ),);
   }
 }

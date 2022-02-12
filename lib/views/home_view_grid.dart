@@ -9,9 +9,10 @@ class HomeViewGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool _isBigScreen = MediaQuery.of(context).size.width > 500;
+
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 1 / 1, crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
+            childAspectRatio: 1 / 1, crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2,),
         itemCount: previews.length,
         itemBuilder: (BuildContext ctx, index) {
           return Card(
@@ -57,7 +58,7 @@ class HomeViewGrid extends StatelessWidget {
                       child: const Text('Подробнее'),
                       onPressed: () => {
                         AppRouter.router.navigateTo(context, Routes.hotelDetails,
-                            routeSettings: RouteSettings(arguments: previews[index]))
+                            routeSettings: RouteSettings(arguments: previews[index]),),
                       },
                       style: TextButton.styleFrom(
                         primary: Colors.white,
@@ -76,6 +77,6 @@ class HomeViewGrid extends StatelessWidget {
               ],
             ),
           );
-        });
+        },);
   }
 }
