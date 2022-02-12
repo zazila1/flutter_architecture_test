@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:architecture_test_business/architecture_test_business.dart';
-import 'package:hotels/views/utils/description_text.dart';
+import 'package:hotels/views/uikit/description_text.dart';
 import 'package:provider/provider.dart';
 
 class HotelDetailsView extends StatefulWidget {
@@ -16,16 +16,14 @@ class HotelDetailsView extends StatefulWidget {
 class _HotelDetailsViewState extends State<HotelDetailsView> {
   @override
   void initState() {
+    Provider.of<HotelsNotifier>(context, listen: false)
+        .loadHotelData(widget.hotelPreview.uuid, notify: false);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     print("BUILD");
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      Provider.of<HotelsNotifier>(context, listen: false)
-          .loadHotelData(widget.hotelPreview.uuid);
-    });
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.hotelPreview.name),

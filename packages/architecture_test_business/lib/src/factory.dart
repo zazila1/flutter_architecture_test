@@ -1,4 +1,4 @@
-import 'package:architecture_test_business/src/notifiers/hotels_notifier.dart';
+import 'package:architecture_test_business/src/models/hotels_notifier.dart';
 import 'package:architecture_test_business/src/notifiers/hotels_state.dart';
 import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:get_it/get_it.dart';

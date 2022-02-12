@@ -9,8 +9,8 @@ class ApiDio implements Api {
 
   ApiDio(this._httpClient, [this._baseUrl = ""]);
 
-  Future<List<HotelsPreviewResponse>> getHotelsPreviewData() async {
-    final List<HotelsPreviewResponse> _data;
+  Future<List<HotelPreviewResponse>> getHotelsPreviewData() async {
+    final List<HotelPreviewResponse> _data;
     final responseData;
 
     try {
@@ -22,8 +22,8 @@ class ApiDio implements Api {
     }
 
     try {
-      _data = List<HotelsPreviewResponse>.from(
-          responseData.data.map((preview) => HotelsPreviewResponse.fromJson(preview)));
+      _data = List<HotelPreviewResponse>.from(
+          responseData.data.map((preview) => HotelPreviewResponse.fromJson(preview)));
 
       return _data;
     } catch (e) {

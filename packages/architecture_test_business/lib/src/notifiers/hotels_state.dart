@@ -1,42 +1,60 @@
 import 'package:architecture_test_business/src/models/hotel.dart';
-import 'package:architecture_test_business/src/notifiers/hotels_notifier.dart';
+import 'package:architecture_test_business/src/models/hotel_preview.dart';
+import 'package:architecture_test_business/src/models/hotels_notifier.dart';
 import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:flutter/material.dart';
 
 class HotelsState with ChangeNotifier implements HotelsNotifier {
-  HotelsState(this._api)
-  {
-   print ("HotelDetailsState CONSTRUCTOR");
+  HotelsState(this._api) {
+    print("HotelDetailsState CONSTRUCTOR");
+    loadHotelsPreviewData();
   }
   final Api _api;
-  late Future<Hotel> previewHotelData;
+  late Future<List<HotelPreview>> previewHotelData;
   late Future<Hotel> hotelData;
 
-  //bool isLoaded = false;
-
-  void loadHotelData(String uuid) async {
-    hotelData = _getHotelDataFromApi(uuid);
+  void loadHotelsPreviewData() async {
+    previewHotelData = _getHotelsPreviewDataFromApi();
     notifyListeners();
+  }
+
+  void loadHotelData(String uuid, {bool notify = true}) async {
+    hotelData = _getHotelDataFromApi(uuid);
+    if (notify) notifyListeners();
   }
 
   void updateHotel() {
     // not implemented
   }
 
-  Future<Hotel> _getHotelDataFromApi(String uuid) async {
-    print("getHotelData");
-    var data;
-    try {
-      data = await _api.getHotelData(uuid);
-    }
-    catch(e)
-    {
-      return Future.error(e);
-    }
-    return Future.value(_fillHotelWithResponseData(data));
+  Future<List<HotelPreview>> _getHotelsPreviewDataFromApi() async {
+    print("_getHotelsPreviewDataFromApi");
+    var data = await _api.getHotelsPreviewData();
+    return Future.value(_generateHotelsPreviewWithResponseData(data));
   }
 
-  Hotel _fillHotelWithResponseData(HotelResponse data) {
+  Future<Hotel> _getHotelDataFromApi(String uuid) async {
+    print("_getHotelDataFromApi");
+    var data = await _api.getHotelData(uuid);
+    return Future.value(_generateHotelWithResponseData(data));
+  }
+
+  List<HotelPreview> _generateHotelsPreviewWithResponseData(List<HotelPreviewResponse> data) {
+    // some logic on a sample of data
+
+    print("_generateHotelsPreviewWithResponseData");
+    List<HotelPreview> _hotelsPreview = [];
+
+    data.forEach((item) {
+      _hotelsPreview.add(HotelPreview(uuid: item.uuid, name: item.name, poster: item.poster));
+    });
+
+    return _hotelsPreview;
+  }
+
+  Hotel _generateHotelWithResponseData(HotelResponse data) {
+    // some logic on a sample of data
+
     print("_fillHotelWithResponseData");
     Services _services = Services(free: data.services.free, paid: data.services.paid);
     Coords _coords = Coords(lat: data.address.coords.lat, lan: data.address.coords.lan);
