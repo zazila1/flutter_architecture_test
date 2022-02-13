@@ -3,8 +3,8 @@ import 'package:get_it/get_it.dart';
 
 import 'api/api_dio.dart';
 import 'api/api.dart';
-import 'models/hotel_repository.dart';
-import 'repository/hotel_repository_data.dart';
+import 'models/hotels_repository.dart';
+import 'repository/hotels_repository_data.dart';
 
 class ServiceProvider {
   static final _getIt = GetIt.I;
@@ -15,8 +15,8 @@ class ServiceProvider {
   void initialize() {
     _getIt.registerLazySingleton<Dio>(() => Dio());
     _getIt.registerLazySingleton<Api>(() => ApiDio(_getIt.get<Dio>(), "https://run.mocky.io/v3/"));
-    _getIt.registerLazySingleton<HotelRepository>(
-      () => HotelRepositoryData(_getIt.get<Api>()),
+    _getIt.registerLazySingleton<HotelsRepository>(
+      () => HotelsRepositoryData(_getIt.get<Api>()),
     );
   }
 }

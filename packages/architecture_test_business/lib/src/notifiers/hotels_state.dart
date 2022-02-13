@@ -5,10 +5,10 @@ import 'package:architecture_test_data/architecture_test_data.dart';
 import 'package:flutter/material.dart';
 
 class HotelsState with ChangeNotifier implements HotelsNotifier {
-  HotelsState(this._hotelRepository) {
+  HotelsState(this._hotelsRepository) {
     loadHotelsPreviewData();
   }
-  final HotelRepository _hotelRepository;
+  final HotelsRepository _hotelsRepository;
 
   @override
   late Future<List<HotelPreview>> previewHotelData;
@@ -44,13 +44,13 @@ class HotelsState with ChangeNotifier implements HotelsNotifier {
   }
 
   Future<List<HotelPreview>> _getHotelsPreviewDataFromApi() async {
-    var data = await _hotelRepository.getHotelsPreviewData();
+    var data = await _hotelsRepository.getHotelsPreviewData();
 
     return Future.value(_generateHotelsPreviewWithResponseData(data));
   }
 
   Future<Hotel> _getHotelDataFromApi(String uuid) async {
-    var data = await _hotelRepository.getHotelData(uuid);
+    var data = await _hotelsRepository.getHotelData(uuid);
 
     return Future.value(_generateHotelWithResponseData(data));
   }
