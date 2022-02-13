@@ -10,7 +10,7 @@ class ApiDio implements Api {
   ApiDio(this._httpClient, [this._baseUrl = ""]);
 
   @override
-  Future<List<HotelPreviewResponse>> getHotelsPreviewData() async {
+  Future<List<HotelPreviewResponse>> getHotelsPreviewResponse() async {
     final List<HotelPreviewResponse> _data;
     final Response responseData;
 
@@ -34,7 +34,7 @@ class ApiDio implements Api {
   }
 
   @override
-  Future<HotelResponse> getHotelData(String uuid) async {
+  Future<HotelResponse> getHotelResponse(String uuid) async {
     HotelResponse _data;
     final Response responseData;
     try {

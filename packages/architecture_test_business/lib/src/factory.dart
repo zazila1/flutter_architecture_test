@@ -12,7 +12,7 @@ class ProvidersFactory {
   void initialize() {
     ServiceProvider.instance.initialize();
     _getIt.registerFactory<HotelsNotifier>(
-          () => HotelsState(_getIt.get<Api>()),
+          () => HotelsState(_getIt.get<HotelRepository>()),
     );
   }
 }
