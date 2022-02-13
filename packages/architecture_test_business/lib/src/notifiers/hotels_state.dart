@@ -50,7 +50,6 @@ class HotelsState with ChangeNotifier implements HotelsNotifier {
   }
 
   Future<Hotel> _getHotelDataFromApi(String uuid) async {
-    await Future.delayed(const Duration(milliseconds: 2000));
     var data = await _api.getHotelData(uuid);
 
     return Future.value(_generateHotelWithResponseData(data));
