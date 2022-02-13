@@ -28,7 +28,7 @@ class Routes {
       hotelDetails,
       handler: hotelDetailsHandler,
       transitionType: TransitionType.custom,
-      transitionDuration: const Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 800),
       transitionBuilder: (context, animation, secondaryAnimation, child) {
         return SharedAxisTransition(
           child: child,

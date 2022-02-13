@@ -6,7 +6,7 @@ abstract class HotelsNotifier with ChangeNotifier  {
   late Future<List<HotelPreview>> previewHotelData;
   late Future<Hotel> hotelData;
 
-  void loadHotelsPreviewData();
+  void loadHotelsPreviewData({bool notify});
   void loadHotelData(String uuid, {bool notify});
   void updateHotel();
 }

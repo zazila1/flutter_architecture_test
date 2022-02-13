@@ -11,6 +11,7 @@ class HomeViewGrid extends StatelessWidget {
     bool _isBigScreen = MediaQuery.of(context).size.width > 500;
 
     return GridView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 1 / 1, crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2,),
         itemCount: previews.length,

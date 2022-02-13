@@ -16,11 +16,12 @@ class HotelPreview with _$HotelPreview {
 
   // удалить
   static Future<List<HotelPreview>>? parseHotelsPreview(
-      dynamic responseData) async {
+      dynamic responseData,) async {
     try {
       await Future.delayed(const Duration(milliseconds: 500));
+
       return List<HotelPreview>.from(
-          responseData.map((preview) => HotelPreview.fromJson(preview)));
+          responseData.map((preview) => HotelPreview.fromJson(preview)),);
     } catch (e) {
       return Future.error(e);
     }

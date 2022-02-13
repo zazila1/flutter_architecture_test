@@ -24,7 +24,8 @@ class ApiDio implements Api {
 
     try {
       _data = List<HotelPreviewResponse>.from(
-          responseData.data.map((preview) => HotelPreviewResponse.fromJson(preview)),);
+        responseData.data.map((preview) => HotelPreviewResponse.fromJson(preview)),
+      );
 
       return _data;
     } catch (e) {

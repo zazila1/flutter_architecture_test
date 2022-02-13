@@ -49,16 +49,22 @@ class _HomeViewState extends State<HomeView> {
                 switch (snapshot.connectionState) {
                   case ConnectionState.none:
                     return const Center(
-                        //child: Text('Введите имя файла'),
                         );
                   case ConnectionState.waiting:
                     return const Center(child: CircularProgressIndicator());
                   case ConnectionState.done:
                     return snapshot.hasError
-                        ? const Center(child: Text("Файл не найден"))
-                        : _isListView
-                            ? HomeViewList(previews: snapshot.data)
-                            : HomeViewGrid(previews: snapshot.data);
+                        ? const Center(child: Text("Ошибка"))
+                        : RefreshIndicator(
+                            onRefresh: () {
+                              state.loadHotelsPreviewData(notify: true);
+
+                              return state.previewHotelData;
+                            },
+                            child: _isListView
+                                ? HomeViewList(previews: snapshot.data)
+                                : HomeViewGrid(previews: snapshot.data),
+                          );
                   default:
                     return const SingleChildScrollView(
                       child: Text('Default'),

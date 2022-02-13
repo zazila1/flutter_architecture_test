@@ -6,48 +6,64 @@ import 'package:flutter/material.dart';
 
 class HotelsState with ChangeNotifier implements HotelsNotifier {
   HotelsState(this._api) {
-    print("HotelDetailsState CONSTRUCTOR");
     loadHotelsPreviewData();
   }
   final Api _api;
+
+  @override
   late Future<List<HotelPreview>> previewHotelData;
+  @override
   late Future<Hotel> hotelData;
 
-  void loadHotelsPreviewData() async {
+  @override
+  void loadHotelsPreviewData({bool notify = true}) async {
     previewHotelData = _getHotelsPreviewDataFromApi();
-    notifyListeners();
+    previewHotelData.then(
+      (value) => {
+        if (notify) notifyListeners(),
+      },
+    );
+
+    //return previewHotelData;
   }
 
+  @override
   void loadHotelData(String uuid, {bool notify = true}) async {
     hotelData = _getHotelDataFromApi(uuid);
-    if (notify) notifyListeners();
+
+    hotelData.then(
+      (value) => {
+        if (notify) notifyListeners(),
+      },
+    );
   }
 
+  @override
   void updateHotel() {
     // not implemented
   }
 
   Future<List<HotelPreview>> _getHotelsPreviewDataFromApi() async {
-    print("_getHotelsPreviewDataFromApi");
     var data = await _api.getHotelsPreviewData();
+
     return Future.value(_generateHotelsPreviewWithResponseData(data));
   }
 
   Future<Hotel> _getHotelDataFromApi(String uuid) async {
-    print("_getHotelDataFromApi");
+    await Future.delayed(const Duration(milliseconds: 2000));
     var data = await _api.getHotelData(uuid);
+
     return Future.value(_generateHotelWithResponseData(data));
   }
 
   List<HotelPreview> _generateHotelsPreviewWithResponseData(List<HotelPreviewResponse> data) {
     // some logic on a sample of data
 
-    print("_generateHotelsPreviewWithResponseData");
     List<HotelPreview> _hotelsPreview = [];
 
-    data.forEach((item) {
+    for (var item in data) {
       _hotelsPreview.add(HotelPreview(uuid: item.uuid, name: item.name, poster: item.poster));
-    });
+    }
 
     return _hotelsPreview;
   }
@@ -55,24 +71,25 @@ class HotelsState with ChangeNotifier implements HotelsNotifier {
   Hotel _generateHotelWithResponseData(HotelResponse data) {
     // some logic on a sample of data
 
-    print("_fillHotelWithResponseData");
     Services _services = Services(free: data.services.free, paid: data.services.paid);
     Coords _coords = Coords(lat: data.address.coords.lat, lan: data.address.coords.lan);
     Address _address = Address(
-        country: data.address.country,
-        street: data.address.street,
-        city: data.address.city,
-        zipCode: data.address.zipCode,
-        coords: _coords);
+      country: data.address.country,
+      street: data.address.street,
+      city: data.address.city,
+      zipCode: data.address.zipCode,
+      coords: _coords,
+    );
     Hotel _hotel = Hotel(
-        uuid: data.uuid,
-        name: data.name,
-        poster: data.poster,
-        address: _address,
-        price: data.price,
-        rating: data.rating,
-        services: _services,
-        photos: data.photos);
+      uuid: data.uuid,
+      name: data.name,
+      poster: data.poster,
+      address: _address,
+      price: data.price,
+      rating: data.rating,
+      services: _services,
+      photos: data.photos,
+    );
 
     return _hotel;
   }

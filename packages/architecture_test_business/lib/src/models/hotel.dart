@@ -21,6 +21,7 @@ class Hotel with _$Hotel {
   static Future<Hotel>? parseHotel(dynamic responseData) async {
     try {
       await Future.delayed(const Duration(milliseconds: 500));
+
       return Hotel.fromJson(responseData);
     } catch (e) {
       return Future.error(e);
